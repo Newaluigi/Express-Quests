@@ -5,7 +5,7 @@ const app = express();
 
 app.use(express.json());
 
-const port = process.env.APP_PORT ?? 5000;
+const port = process.env.APP_PORT ?? 5063;
 
 const welcome = (req, res) => {
   res.send("Welcome to my favourite movie list");
@@ -21,6 +21,9 @@ app.get("/api/movies/:id", movieHandlers.getMovieById);
 app.get("/api/users", userHandlers.getUsers);
 app.get("/api/users/:id", userHandlers.getUserById);
 app.post("/api/movies", movieHandlers.postMovie);
+app.post("/api/users", userHandlers.postUser);
+app.put("/api/movies/:id", movieHandlers.updateMovie);
+app.put("/api/users/:id", userHandlers.updateUser);
 
 app.listen(port, (err) => {
   if (err) {
